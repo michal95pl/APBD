@@ -10,7 +10,7 @@ static double Avg_func(double[] data)
     return data.Average();
 }
 
-static void Max_func(double[] data)
+static double Max_func(double[] data)
 {
-    
+    return data.Max();
 }
