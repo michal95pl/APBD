@@ -9,3 +9,8 @@ static double Avg_func(double[] data)
 {
     return data.Average();
 }
+
+static void Max_func(double[] data)
+{
+    
+}
