@@ -3,37 +3,51 @@
 public abstract class Container
 {
     private double _weightPayload;
-    private double _high;
-    private double _weight;
+    private double _height;
+    private double _weightContainer;
     private double _depth;
-    private string _serial;
-    protected double _maxWeight;
+    public string Serial;
+    protected double MaxWeight;
 
     private static int _lastSerialNumber = 0;
     
-    protected Container(char type)
+    protected Container(char type, double height, double weightContainer, double depth, double maxWeight)
     {
-        this._serial = "KON-" +
-                             type + "-" +
-                             _lastSerialNumber++;
+        Serial = "KON-" +
+                 type + "-" +
+                 _lastSerialNumber++;
+
+        _height = height;
+        _weightContainer = weightContainer;
+        _depth = depth;
+        MaxWeight = maxWeight;
         
-        Console.WriteLine(this._serial);
+        _weightPayload = 0;
     }
 
-    public double Unload()
+    protected double Unload()
     {
-        double temp = this._weightPayload;
-        this._weightPayload = 0;
+        double temp = _weightPayload;
+        _weightPayload = 0;
         
         return temp;
     }
 
-    public void Load(double peyload)
+    protected void Load(double payload)
     {
-        if (peyload > _maxWeight)
+        if (payload > MaxWeight)
             throw new OverfillException("weight is out of limit");
         
-        this._weightPayload = peyload;
+        _weightPayload = payload;
     }
 
+    public override string ToString()
+    {
+        return "Serial: " + Serial + "\n"
+               + "Container high: " + _height + "\n"
+               + "Container depth: " + _depth + "\n"
+               + "Container max payload weight: " + MaxWeight + "\n"
+               + "Weight of container (without payload): " + _weightContainer + "\n"
+               + "Weight payload: " + _weightPayload;
+    }
 }
