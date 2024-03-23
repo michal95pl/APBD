@@ -13,10 +13,12 @@ public class RefrigeratedContainer : Container
         Temperature = containerTemperature;
     }
 
-    void Load(String product, double weight, double temperature)
+    public void Load(String product, double weight, double temperature)
     {
         if (_product.Equals(product) && Temperature >= temperature)
             base.Load(weight);
+        else
+            Console.WriteLine("this product can't be load on this container");
     }
 
     public override string ToString()

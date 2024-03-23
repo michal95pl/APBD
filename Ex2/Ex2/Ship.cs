@@ -16,7 +16,10 @@ public class Ship
 
     public void LoadContainer(Container container)
     {
-        _containers.Add(container);
+        if (_containers.Count+1 <= _maxContainers)
+            _containers.Add(container);
+        else
+            Console.WriteLine("Ship has max containers");
     }
 
     public void UnloadContainer(Container container)
@@ -50,7 +53,7 @@ public class Ship
 
         foreach (Container container in _containers)
         {
-            inf += container + "\n";
+            inf += container + "\n\n";
         }
 
         return inf;

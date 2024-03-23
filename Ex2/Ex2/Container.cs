@@ -33,7 +33,7 @@ public abstract class Container
         return temp;
     }
 
-    protected void Load(double payload)
+    public void Load(double payload)
     {
         if (payload > MaxWeight)
             throw new OverfillException("weight is out of limit");
