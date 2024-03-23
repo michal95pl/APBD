@@ -24,19 +24,22 @@ public class Ship
         _containers.Remove(container);
     }
 
+    public void LoadContainers(List<Container> containers)
+    {
+        this._containers.AddRange(containers);
+    }
+
     public Container? ReplaceContainer(String serial, Container container)
     {
         for (int i = 0; i < _containers.Count; i++)
         {
-            if (_containers[i].serial.Equals(serial))
+            if (_containers[i].Serial.Equals(serial))
             {
                 Container temp = _containers[i];
                 _containers[i] = container;
                 return temp;
             }
-                
         }
-
         return null;
     }
 
